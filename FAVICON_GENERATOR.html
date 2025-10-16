@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberrk Technology Favicon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #003f88, #00509d, #fdc500);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .favicon-preview {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #003f88, #00509d, #fdc500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .download-btn {
+            background: #fdc500;
+            color: #003f88;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 197, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Cyberrk Technology Favicon Generator</h1>
+
+        <div class="favicon-preview">
+            CT
+        </div>
+
+        <p><strong>Preview:</strong> This is how your favicon will look - "CT" in a circular gradient background using your brand colors.</p>
+
+        <div class="instructions">
+            <h2>📋 How to Generate Your Favicon</h2>
+
+            <div class="step">
+                <h3>Step 1: Save this HTML file</h3>
+                <p>Save this file as <code>favicon-generator.html</code> and open it in your browser.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 2: Generate Favicon Files</h3>
+                <p>Use one of these free online favicon generators:</p>
+                <ul>
+                    <li><a href="https://favicon.io/favicon-generator/" target="_blank" style="color: #fdc500;">favicon.io</a> - Upload the SVG or use text</li>
+                    <li><a href="https://www.favicon-generator.org/" target="_blank" style="color: #fdc500;">Favicon Generator</a> - Simple online tool</li>
+                    <li><a href="https://favicon.io/favicon-converter/" target="_blank" style="color: #fdc500;">Favicon Converter</a> - Convert SVG to ICO/PNG</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Download Files</h3>
+                <p>Generate these files and save them in your <code>public/</code> folder:</p>
+                <div class="code">
+favicon.ico (16x16, 32x32, 48x48)<br>
+favicon-16x16.png<br>
+favicon-32x32.png<br>
+apple-touch-icon.png (180x180)
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Step 4: Alternative - Use the SVG</h3>
+                <p>The SVG favicon is already created and will work in modern browsers. For full compatibility, generate the ICO and PNG versions.</p>
+            </div>
+        </div>
+
+        <h2>🎨 Favicon Specifications</h2>
+        <div class="code">
+Sizes needed:<br>
+• favicon.ico: 16x16, 32x32, 48x48 (multi-size ICO)<br>
+• favicon-16x16.png: 16x16px<br>
+• favicon-32x32.png: 32x32px<br>
+• apple-touch-icon.png: 180x180px<br>
+• favicon.svg: Vector format (already created)
+        </div>
+
+        <h2>🛠️ Quick Generation Commands</h2>
+        <p>If you have ImageMagick installed:</p>
+        <div class="code">
+# Convert SVG to ICO<br>
+convert favicon.svg -background transparent favicon.ico<br><br>
+# Generate PNG sizes<br>
+convert favicon.svg -resize 16x16 favicon-16x16.png<br>
+convert favicon.svg -resize 32x32 favicon-32x32.png<br>
+convert favicon.svg -resize 180x180 apple-touch-icon.png
+        </div>
+
+        <button class="download-btn" onclick="downloadSVG()">📥 Download SVG Favicon</button>
+
+        <p><strong>Note:</strong> The SVG favicon is already in your public folder and will work in modern browsers. The ICO/PNG versions are for maximum browser compatibility.</p>
+    </div>
+
+    <script>
+        function downloadSVG() {
+            const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003f88;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00509d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fdc500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#grad1)"/>
+
+  <!-- CT Text -->
+  <text x="50" y="70" font-family="Arial, sans-serif" font-size="45" font-weight="bold" fill="white" text-anchor="middle">CT</text>
+</svg>`;
+
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'favicon.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
