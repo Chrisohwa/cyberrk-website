@@ -77,9 +77,9 @@ const servicesDetailed = [
     description:
       'Empower your team with professional training programs covering the latest web and mobile development technologies and best practices.',
     features: [
-      'Web Development Bootcamps',
       'Mobile App Development Courses',
       'Frontend & Backend Training',
+      'Data Analyics Training',
       'Modern Framework Training',
       'Hands-on Project Experience',
       'Certification Programs',

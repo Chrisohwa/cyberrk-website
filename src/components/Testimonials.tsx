@@ -22,7 +22,7 @@ const testimonials = [
     name: 'John Anderson',
     company: 'TechStart Inc.',
     role: 'CEO',
-    image: 'https://i.pravatar.cc/150?img=12',
+    // image: 'https://i.pravatar.cc/150?img=12',
     rating: 5,
     testimony:
       'Cyberrk Technology transformed our digital presence completely. Their expertise in web development and SEO helped us increase our online traffic by 300%. Highly recommended!',
@@ -31,25 +31,25 @@ const testimonials = [
     name: 'Sarah Mitchell',
     company: 'Digital Solutions Ltd',
     role: 'Marketing Director',
-    image: 'https://i.pravatar.cc/150?img=45',
+    // image: 'https://i.pravatar.cc/150?img=45',
     rating: 5,
     testimony:
       'Working with Cyberrk was an absolute pleasure. They delivered our mobile app ahead of schedule and exceeded all our expectations. Their attention to detail is remarkable.',
   },
   {
-    name: 'Michael Chen',
-    company: 'InnovateCorp',
+    name: 'Anselm Fowel',
+    company: 'Transalliance Group',
     role: 'CTO',
-    image: 'https://i.pravatar.cc/150?img=33',
+    // image: 'https://i.pravatar.cc/150?img=33',
     rating: 5,
     testimony:
       'The training program provided by Cyberrk Technology upskilled our entire development team. Their instructors are knowledgeable and the curriculum is cutting-edge.',
   },
   {
-    name: 'Emily Rodriguez',
+    name: 'Ebere Nwachukwu',
     company: 'GrowthHub',
     role: 'Founder',
-    image: 'https://i.pravatar.cc/150?img=47',
+    // image: 'https://i.pravatar.cc/150?img=47',
     rating: 5,
     testimony:
       'Our website redesign by Cyberrk resulted in a 250% increase in conversions. Their strategic approach to UX design and development is world-class.',
@@ -58,7 +58,7 @@ const testimonials = [
     name: 'David Thompson',
     company: 'Enterprise Solutions',
     role: 'VP of Technology',
-    image: 'https://i.pravatar.cc/150?img=15',
+    // image: 'https://i.pravatar.cc/150?img=15',
     rating: 5,
     testimony:
       'Cyberrk Technology delivered a complex enterprise application that streamlined our operations. Their technical expertise and project management skills are outstanding.',
@@ -67,7 +67,7 @@ const testimonials = [
     name: 'Lisa Wang',
     company: 'StartupVentures',
     role: 'Product Manager',
-    image: 'https://i.pravatar.cc/150?img=48',
+    // image: 'https://i.pravatar.cc/150?img=48',
     rating: 5,
     testimony:
       'The SEO optimization services from Cyberrk helped us rank #1 for our target keywords. Our organic traffic has tripled in just 6 months!',
@@ -197,16 +197,6 @@ export default function Testimonials() {
                   borderWidth="1px"
                   borderColor={colorMode === 'dark' ? 'gray.700' : 'gray.200'}
                   position="relative"
-                  _before={{
-                    content: '"""',
-                    position: 'absolute',
-                    top: { base: 4, md: 6 },
-                    left: { base: 4, md: 6 },
-                    fontSize: { base: '4xl', md: '6xl' },
-                    color: colorMode === 'dark' ? 'brand.gold' : 'brand.marianBlue',
-                    opacity: 0.3,
-                    fontFamily: 'Georgia, serif',
-                  }}
                 >
                   <VStack spacing={6} align="start">
                     {/* Rating */}
@@ -237,7 +227,7 @@ export default function Testimonials() {
                       <Avatar
                         size="lg"
                         name={testimonials[currentIndex].name}
-                        src={testimonials[currentIndex].image}
+                        // src={testimonials[currentIndex]?.image || ""}
                         border="3px solid"
                         borderColor={colorMode === 'dark' ? 'brand.gold' : 'brand.marianBlue'}
                       />

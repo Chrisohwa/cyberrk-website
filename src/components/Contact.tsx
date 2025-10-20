@@ -27,7 +27,7 @@ const contactInfo = [
   {
     icon: FaEnvelope,
     title: 'Email',
-    value: 'info@cyberrk.ng',
+    value: 'info@cyberrktechnology.ng',
     link: 'mailto:info@cyberrk.ng',
   },
   {

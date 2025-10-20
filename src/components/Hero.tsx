@@ -262,9 +262,9 @@ export default function Hero() {
             >
               <VStack spacing={6} align="stretch">
                 {[
-                  { number: '100+', label: 'Projects Completed', delay: 0 },
-                  { number: '50+', label: 'Happy Clients', delay: 0.1 },
-                  { number: '5+', label: 'Years Experience', delay: 0.2 },
+                  { number: '20+', label: 'Projects Completed', delay: 0 },
+                  { number: '18+', label: 'Happy Clients', delay: 0.1 },
+                  { number: '2+', label: 'Years Experience', delay: 0.2 },
                 ].map((stat, index) => (
                   <MotionBox
                     key={index}

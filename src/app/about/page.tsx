@@ -67,10 +67,10 @@ const values = [
 ];
 
 const stats = [
-  { number: '100+', label: 'Projects Completed' },
-  { number: '50+', label: 'Happy Clients' },
-  { number: '5+', label: 'Years Experience' },
-  { number: '15+', label: 'Team Members' },
+  { number: '20+', label: 'Projects Completed' },
+  { number: '18+', label: 'Happy Clients' },
+  { number: '2+', label: 'Years Experience' },
+  { number: '6+', label: 'Team Members' },
 ];
 
 export default function AboutPage() {

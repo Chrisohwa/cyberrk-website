@@ -151,7 +151,29 @@ const colors = {
 
 ## Deployment
 
-### Vercel (Recommended)
+### Docker (Recommended for Hosting on Truehost)
+1. Build the Docker image:
+```bash
+docker build -t cyberrk-website .
+```
+
+2. Run the container locally to test:
+```bash
+docker run -p 3000:3000 cyberrk-website
+```
+
+3. Push the image to a registry (e.g., Docker Hub):
+```bash
+# Tag the image
+docker tag cyberrk-website your-dockerhub-username/cyberrk-website:latest
+
+# Push to Docker Hub
+docker push your-dockerhub-username/cyberrk-website:latest
+```
+
+4. Deploy on Truehost using the Docker image from your registry.
+
+### Vercel
 1. Push your code to GitHub
 2. Import project in Vercel
 3. Deploy with one click
