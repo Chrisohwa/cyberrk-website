@@ -154,7 +154,7 @@ export default function ServicesPage() {
                   maxW="3xl"
                 >
                   Comprehensive digital solutions tailored to your business needs. From SEO to
-                  custom development, we've got you covered.
+                  custom development, we&apos;ve got you covered.
                 </Text>
               </MotionBox>
             </VStack>
@@ -236,7 +236,7 @@ export default function ServicesPage() {
                           mb={6}
                           color={colorMode === 'dark' ? 'white' : 'gray.800'}
                         >
-                          What's Included
+                          What&apos;s Included
                         </Heading>
                         <List spacing={3}>
                           {service.features.map((feature, idx) => (
@@ -291,7 +291,7 @@ export default function ServicesPage() {
                     color={colorMode === 'dark' ? 'gray.300' : 'gray.600'}
                     maxW="2xl"
                   >
-                    Let's discuss how we can help you achieve your digital goals. Contact us today
+                    Let&apos;s discuss how we can help you achieve your digital goals. Contact us today
                     for a free consultation.
                   </Text>
                   <Link href="/contact">

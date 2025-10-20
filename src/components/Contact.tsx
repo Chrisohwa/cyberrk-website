@@ -134,7 +134,7 @@ export default function Contact() {
               maxW="2xl"
               mx="auto"
             >
-              Have a project in mind? Let's discuss how we can help you achieve your goals.
+              Have a project in mind? Let&apos;s discuss how we can help you achieve your goals.
             </Text>
           </MotionBox>
 

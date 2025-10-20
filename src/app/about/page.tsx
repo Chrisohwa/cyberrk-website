@@ -400,7 +400,7 @@ export default function AboutPage() {
                     color={colorMode === 'dark' ? 'gray.300' : 'gray.600'}
                   >
                     Our journey began with a simple belief: that every business deserves access to
-                    world-class digital solutions. Today, we're proud to have helped numerous
+                    world-class digital solutions. Today, we&apos;re proud to have helped numerous
                     clients achieve their goals through innovative technology and strategic
                     thinking.
                   </Text>

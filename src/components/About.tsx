@@ -75,7 +75,7 @@ export default function About() {
               >
                 Our team of experienced professionals combines technical expertise with
                 creative thinking to deliver solutions that not only meet but exceed your
-                expectations. From SEO optimization to custom application development, we're
+                expectations. From SEO optimization to custom application development, we&apos;re
                 your trusted partner in digital success.
               </Text>
             </VStack>

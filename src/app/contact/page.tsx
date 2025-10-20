@@ -66,7 +66,7 @@ export default function ContactPage() {
                   bgClip="text"
                   mb={4}
                 >
-                  Let's Work Together
+                  Let&apos;s Work Together
                 </Heading>
               </MotionBox>
               <MotionBox
@@ -79,7 +79,7 @@ export default function ContactPage() {
                   color={colorMode === 'dark' ? 'gray.300' : 'gray.600'}
                   maxW="3xl"
                 >
-                  Ready to transform your digital presence? Get in touch with us today and let's
+                  Ready to transform your digital presence? Get in touch with us today and let&apos;s
                   discuss how we can help you achieve your goals.
                 </Text>
               </MotionBox>
