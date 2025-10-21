@@ -1,0 +1,21 @@
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  position: relative;
+}
+
+/* Prevent horizontal scroll on all containers */
+* {
+  box-sizing: border-box;
+}
+
+/* Additional fix for Chakra UI containers if needed */
+#__next,
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+}

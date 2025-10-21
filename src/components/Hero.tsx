@@ -14,54 +14,96 @@ import {
 import { motion } from 'framer-motion';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import { useMemo } from 'react';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 
+// Memoized animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+    },
+  },
+};
+
+const floatingAnimation = {
+  y: [0, -20, 0],
+  transition: {
+    duration: 3,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  },
+};
+
+const floatingAnimation2 = {
+  y: [0, 30, 0],
+  transition: {
+    duration: 4,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  },
+};
+
+// Stats data
+const desktopStats = [
+  { number: '20+', label: 'Projects Completed', delay: 0 },
+  { number: '18+', label: 'Happy Clients', delay: 0.1 },
+  { number: '2+', label: 'Years Experience', delay: 0.2 },
+];
+
+const mobileStats = [
+  { number: '20+', label: 'Projects' },
+  { number: '18+', label: 'Clients' },
+  { number: '2+', label: 'Years' },
+];
+
 export default function Hero() {
   const { colorMode } = useColorMode();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
+  // Memoize gradient overlays to prevent recalculation
+  const backgroundGradient = useMemo(
+    () =>
+      colorMode === 'dark'
+        ? 'linear-gradient(135deg, rgba(0, 41, 107, 0.60) 0%, rgba(0, 63, 136, 0.60) 50%, rgba(0, 80, 157, 0.60) 100%)'
+        : 'linear-gradient(135deg, rgba(0, 41, 107, 0.60) 0%, rgba(0, 63, 136, 0.60) 50%, rgba(0, 80, 157, 0.60) 100%)',
+    [colorMode]
+  );
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const floatingAnimation = {
-    y: [0, -20, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    },
-  };
+  const radialGradient = useMemo(
+    () =>
+      colorMode === 'dark'
+        ? 'radial-gradient(circle at 20% 50%, rgba(253, 197, 0, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 213, 0, 0.15) 0%, transparent 50%)'
+        : 'radial-gradient(circle at 20% 50%, rgba(253, 197, 0, 0.12) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 213, 0, 0.12) 0%, transparent 50%)',
+    [colorMode]
+  );
 
   return (
     <Box
-      minH="100vh"
+      minH={{ sm: 'calc(90vh - 64px)', md: '100vh' }}
       display="flex"
       alignItems="center"
       position="relative"
       overflow="hidden"
-      pt={{ base: 20, md: 0 }}
+      pt={{ base: '80px', sm: '88px', md: '96px', lg: 0 }}
+      pb={{ base: 8, md: 0 }}
     >
       {/* Hero Background Image with Overlay */}
       <Box
@@ -72,7 +114,7 @@ export default function Hero() {
         bottom={0}
         bgImage="url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')"
         bgSize="cover"
-        bgPosition="center"
+        bgPosition={{ base: 'center', md: 'center' }}
         bgRepeat="no-repeat"
         _after={{
           content: '""',
@@ -81,9 +123,7 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          bg: colorMode === 'dark' 
-            ? 'linear-gradient(135deg, rgba(0, 41, 107, 0.60) 0%, rgba(0, 63, 136, 0.60) 50%, rgba(0, 80, 157, 0.60) 100%)'
-            : 'linear-gradient(135deg, rgba(0, 41, 107, 0.60) 0%, rgba(0, 63, 136, 0.60) 50%, rgba(0, 80, 157, 0.60) 100%)',
+          bg: backgroundGradient,
         }}
       />
 
@@ -94,11 +134,7 @@ export default function Hero() {
         left={0}
         right={0}
         bottom={0}
-        bgGradient={
-          colorMode === 'dark'
-            ? 'radial-gradient(circle at 20% 50%, rgba(253, 197, 0, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 213, 0, 0.15) 0%, transparent 50%)'
-            : 'radial-gradient(circle at 20% 50%, rgba(253, 197, 0, 0.12) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 213, 0, 0.12) 0%, transparent 50%)'
-        }
+        bgGradient={radialGradient}
         animate={{
           opacity: [0.3, 0.5, 0.3],
         }}
@@ -113,50 +149,72 @@ export default function Hero() {
       {/* Animated Floating Elements */}
       <MotionBox
         position="absolute"
-        top="15%"
-        right="10%"
-        w="250px"
-        h="250px"
+        top={{ base: '10%', md: '15%' }}
+        right={{ base: '5%', md: '10%' }}
+        w={{ base: '150px', md: '200px', lg: '250px' }}
+        h={{ base: '150px', md: '200px', lg: '250px' }}
         borderRadius="full"
         bg="brand.gold"
         opacity={0.08}
-        filter="blur(60px)"
+        filter={{ base: 'blur(40px)', md: 'blur(60px)' }}
         animate={floatingAnimation}
         zIndex={1}
+        display={{ base: 'none', sm: 'block' }}
       />
       <MotionBox
         position="absolute"
-        bottom="15%"
-        left="8%"
-        w="300px"
-        h="300px"
+        bottom={{ base: '10%', md: '15%' }}
+        left={{ base: '3%', md: '8%' }}
+        w={{ base: '180px', md: '250px', lg: '300px' }}
+        h={{ base: '180px', md: '250px', lg: '300px' }}
         borderRadius="full"
         bg="brand.mikadoYellow"
         opacity={0.08}
-        filter="blur(70px)"
-        animate={{
-          y: [0, 30, 0],
-          transition: {
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          },
-        }}
+        filter={{ base: 'blur(50px)', md: 'blur(70px)' }}
+        animate={floatingAnimation2}
         zIndex={1}
+        display={{ base: 'none', sm: 'block' }}
       />
 
-      <Container maxW="container.xl" position="relative" zIndex={2}>
+      <Container
+        maxW={{
+          base: '100%',
+          sm: 'container.sm',
+          md: 'container.md',
+          lg: 'container.lg',
+          xl: 'container.xl',
+          '2xl': 'container.2xl',
+        }}
+        position="relative"
+        zIndex={2}
+        px={{ base: 4, sm: 6, md: 8 }}
+      >
         <MotionBox
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={12} alignItems="center">
+          <SimpleGrid
+            columns={{ base: 1, lg: 2 }}
+            spacing={{ base: 8, md: 10, lg: 12 }}
+            alignItems="center"
+          >
             {/* Text Content */}
-            <VStack spacing={8} align={{ base: 'center', lg: 'start' }} textAlign={{ base: 'center', lg: 'left' }}>
+            <VStack
+              spacing={{ base: 6, md: 8 }}
+              align={{ base: 'center', lg: 'start' }}
+              textAlign={{ base: 'center', lg: 'left' }}
+            >
               <MotionHeading
                 as="h1"
-                fontSize={{ base: '4xl', md: '5xl', lg: '6xl', xl: '7xl' }}
+                fontSize={{
+                  base: '3xl',
+                  sm: '4xl',
+                  md: '5xl',
+                  lg: '5xl',
+                  xl: '6xl',
+                  '2xl': '7xl',
+                }}
                 fontWeight="extrabold"
                 lineHeight="shorter"
                 variants={itemVariants}
@@ -168,6 +226,7 @@ export default function Hero() {
                   as="span"
                   bgGradient="linear(to-r, brand.mikadoYellow, brand.gold)"
                   bgClip="text"
+                  display={{ base: 'inline', sm: 'inline' }}
                   animation="gradient 8s ease infinite"
                   sx={{
                     '@keyframes gradient': {
@@ -188,32 +247,36 @@ export default function Hero() {
               </MotionHeading>
 
               <MotionText
-                fontSize={{ base: 'lg', md: 'xl', lg: '2xl' }}
+                fontSize={{ base: 'md', sm: 'lg', md: 'xl', lg: 'xl', xl: '2xl' }}
                 color="whiteAlpha.900"
-                maxW="2xl"
+                maxW={{ base: 'full', lg: '2xl' }}
                 variants={itemVariants}
                 textShadow="0 2px 10px rgba(0, 0, 0, 0.3)"
+                px={{ base: 2, sm: 0 }}
               >
-                Empowering businesses with cutting-edge web solutions, mobile applications,
-                SEO optimization, and professional training services.
+                Empowering businesses with cutting-edge web solutions, mobile
+                applications, SEO optimization, and professional training services.
               </MotionText>
 
-              <MotionBox variants={itemVariants}>
+              <MotionBox variants={itemVariants} w={{ base: 'full', sm: 'auto' }}>
                 <Stack
                   direction={{ base: 'column', sm: 'row' }}
-                  spacing={4}
+                  spacing={{ base: 3, sm: 4 }}
                   justify={{ base: 'center', lg: 'start' }}
+                  w={{ base: 'full', sm: 'auto' }}
                 >
-                  <Link href="/services">
+                  <Link href="/services" passHref legacyBehavior>
                     <Button
-                      size="lg"
+                      as="a"
+                      size={{ base: 'md', md: 'lg' }}
                       rightIcon={<ArrowForwardIcon />}
                       bg="brand.gold"
                       color="gray.900"
-                      px={8}
-                      py={6}
-                      fontSize="lg"
+                      px={{ sm: 6, md: 8 }}
+                      py={{ base: 5, md: 6 }}
+                      fontSize={{ base: 'md', md: 'lg' }}
                       fontWeight="bold"
+                      w={{ base: 'full', sm: 'full' }}
                       _hover={{
                         bg: 'brand.mikadoYellow',
                         transform: 'translateY(-4px)',
@@ -227,17 +290,19 @@ export default function Hero() {
                       Explore Services
                     </Button>
                   </Link>
-                  <Link href="/contact">
+                  <Link href="/contact" passHref legacyBehavior>
                     <Button
-                      size="lg"
+                      as="a"
+                      size={{ base: 'md', md: 'lg' }}
                       variant="outline"
                       borderColor="white"
                       borderWidth="2px"
                       color="white"
-                      px={8}
-                      py={6}
-                      fontSize="lg"
+                      px={{ base: 6, md: 8 }}
+                      py={{ base: 5, md: 6 }}
+                      fontSize={{ base: 'md', md: 'lg' }}
                       fontWeight="bold"
+                      w={{ base: 'full', sm: 'full' }}
                       _hover={{
                         bg: 'whiteAlpha.200',
                         transform: 'translateY(-4px)',
@@ -255,17 +320,13 @@ export default function Hero() {
               </MotionBox>
             </VStack>
 
-            {/* Animated Stats Cards */}
+            {/* Desktop Animated Stats Cards */}
             <MotionBox
               variants={itemVariants}
               display={{ base: 'none', lg: 'block' }}
             >
               <VStack spacing={6} align="stretch">
-                {[
-                  { number: '20+', label: 'Projects Completed', delay: 0 },
-                  { number: '18+', label: 'Happy Clients', delay: 0.1 },
-                  { number: '2+', label: 'Years Experience', delay: 0.2 },
-                ].map((stat, index) => (
+                {desktopStats.map((stat, index) => (
                   <MotionBox
                     key={index}
                     initial={{ opacity: 0, x: 50 }}
@@ -277,7 +338,7 @@ export default function Hero() {
                     }}
                   >
                     <Box
-                      p={6}
+                      p={{ lg: 5, xl: 6 }}
                       borderRadius="xl"
                       bg="whiteAlpha.200"
                       backdropFilter="blur(20px)"
@@ -291,7 +352,7 @@ export default function Hero() {
                       }}
                     >
                       <Text
-                        fontSize="4xl"
+                        fontSize={{ lg: '3xl', xl: '4xl' }}
                         fontWeight="bold"
                         bgGradient="linear(to-r, brand.mikadoYellow, brand.gold)"
                         bgClip="text"
@@ -300,7 +361,7 @@ export default function Hero() {
                         {stat.number}
                       </Text>
                       <Text
-                        fontSize="md"
+                        fontSize={{ lg: 'sm', xl: 'md' }}
                         color="whiteAlpha.900"
                         fontWeight="medium"
                       >
@@ -316,41 +377,36 @@ export default function Hero() {
           {/* Mobile Stats */}
           <MotionBox
             variants={itemVariants}
-            mt={12}
+            mt={{ base: 8, sm: 10, md: 12 }}
             display={{ base: 'block', lg: 'none' }}
           >
-            <Stack
-              direction={{ base: 'column', sm: 'row' }}
-              spacing={4}
-              justify="center"
+            <SimpleGrid
+              columns={{ base: 3 }}
+              spacing={{ base: 3, sm: 4 }}
+              w="full"
             >
-              {[
-                { number: '100+', label: 'Projects' },
-                { number: '50+', label: 'Clients' },
-                { number: '5+', label: 'Years' },
-              ].map((stat, index) => (
+              {mobileStats.map((stat, index) => (
                 <Box
                   key={index}
                   textAlign="center"
-                  p={6}
+                  p={{ base: 4, sm: 5, md: 6 }}
                   borderRadius="lg"
                   bg="whiteAlpha.200"
                   backdropFilter="blur(20px)"
                   borderWidth="1px"
                   borderColor="whiteAlpha.300"
-                  flex={1}
-                  minW="120px"
                 >
                   <Text
-                    fontSize="3xl"
+                    fontSize={{ base: '2xl', sm: '3xl' }}
                     fontWeight="bold"
                     bgGradient="linear(to-r, brand.mikadoYellow, brand.gold)"
                     bgClip="text"
+                    mb={1}
                   >
                     {stat.number}
                   </Text>
                   <Text
-                    fontSize="sm"
+                    fontSize={{ base: 'xs', sm: 'sm' }}
                     color="whiteAlpha.900"
                     fontWeight="medium"
                   >
@@ -358,7 +414,7 @@ export default function Hero() {
                   </Text>
                 </Box>
               ))}
-            </Stack>
+            </SimpleGrid>
           </MotionBox>
         </MotionBox>
       </Container>

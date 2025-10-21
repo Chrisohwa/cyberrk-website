@@ -87,7 +87,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={6}>
+            <SimpleGrid columns={{ base: 1, md: 2,}} spacing={6}>
               {values.map((value, index) => (
                 <MotionBox
                   key={index}
