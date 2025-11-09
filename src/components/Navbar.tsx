@@ -115,11 +115,7 @@ export default function Navbar() {
           w="full"
           px={{ sm: 4, md: 8 }}
         >
-          <Flex
-            h={16}
-            alignItems="center"
-            justifyContent="space-between"
-          >
+          <Flex h={16} alignItems="center" justifyContent="space-between">
             {/* Logo */}
             <MotionBox
               initial={{ opacity: 0, x: -20 }}
@@ -127,7 +123,7 @@ export default function Navbar() {
               transition={{ duration: 0.5 }}
             >
               <Link href="/" passHref legacyBehavior>
-                <ChakraLink>
+                <ChakraLink _hover={{ textDecoration: "none" }}>
                   <Text
                     fontSize={{ base: "xl", sm: "2xl" }}
                     fontWeight="bold"
